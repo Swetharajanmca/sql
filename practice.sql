@@ -1,0 +1,21 @@
+use dash;
+create  table workers(name varchar(20),place varchar(30),work_id int primary key, salary int);
+create table admin(dept_name varchar(30),location varchar(30),dept_id int,foreign key(dept_id)references workers(work_id));
+insert into workers values('vendhan','tnj',1,60000);
+insert into workers values('vendha','trichy',2,60000);
+insert into workers values('boomi','madurai',3,60000);
+insert into workers values('santh','ond',4,60000);
+insert into workers values('vishwa','pudur',5,60000);
+insert into workers values('veera','tnj',6,60000);
+select*from workers;
+
+insert into admin values('electrical','central',1);
+insert into admin values('mecha','central',2);
+insert into admin values('it','south',3);
+insert into admin values('voice','north',4);
+insert into admin values('electrical','central',5);
+insert into admin values('eee','west',6);
+select*from admin;
+select workers.name,workers.salary,admin.location from workers join admin on workers.work_id=admin.dept_id;
+select name,salary from workers group by place;
+select workers.name,workers.salary,admin.dept_id from workers left join admin on workers.work_id=admin.dept_id;
